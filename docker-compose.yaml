@@ -11,6 +11,7 @@ services:
       - db
     networks: 
       - default
+    restart:always
   
   db:
     image: mysql:8.0
@@ -26,7 +27,7 @@ services:
       - ./database:/docker-entrypoint-initdb.d
     networks: 
       - default
-    
+    restart:always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -38,6 +39,7 @@ services:
       MYSQL_USER: jack
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
+    restart:always
 volumes:
     persistent:
 
