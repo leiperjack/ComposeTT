@@ -4,14 +4,14 @@ services:
     image: httpd:latest
     build: .
     ports: 
-      - "8003:80"
+      - "7000:80"
     volumes:
       - ./www:/var/www/html/
     links: 
       - db
     networks: 
       - default
-    restart:always
+    restart: always
   
   db:
     image: mysql:8.0
@@ -27,19 +27,19 @@ services:
       - ./database:/docker-entrypoint-initdb.d
     networks: 
       - default
-    restart:always
+    restart: always
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links: 
       - db:db
     ports:
-      - "8004:80"
+      - "7001:80"
     environment:
       MYSQL_USER: jack
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-    restart:always
+    restart: always
 volumes:
     persistent:
 
